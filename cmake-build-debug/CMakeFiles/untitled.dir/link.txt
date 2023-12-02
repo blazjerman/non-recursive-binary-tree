@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 233.11799.37\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\untitled.dir/objects.a
+C:\PROGRA~1\JETBRA~1\CLION2~1.37\bin\mingw\bin\ar.exe qc CMakeFiles\untitled.dir/objects.a @CMakeFiles\untitled.dir\objects1.rsp
+C:\PROGRA~1\JETBRA~1\CLION2~1.37\bin\mingw\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\untitled.dir/objects.a -Wl,--no-whole-archive -o untitled.exe -Wl,--out-implib,libuntitled.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\untitled.dir\linkLibs.rsp
