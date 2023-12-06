@@ -5,6 +5,8 @@
 #define ROOT 0
 #define TREE_SIZE 100
 
+#define LEVEL_BUFFER_SIZE 2
+
 
 
 struct Leaf{
@@ -21,7 +23,7 @@ struct Leaf tree[TREE_SIZE];
 uint32_t treeSize = 0;
 
 
-bool addValue(int32_t value){
+bool insertValue(int32_t value){
 
     uint64_t cmpLeaf = ROOT;
 
@@ -31,7 +33,7 @@ bool addValue(int32_t value){
 
         if(tree[cmpLeaf].value < value){
 
-            if(tree[cmpLeaf].left == ROOT){
+            if(tree[cmpLeaf].left == 0){
 
                 tree[cmpLeaf].left = treeSize;
                 tree[treeSize++].value = value;
@@ -42,7 +44,7 @@ bool addValue(int32_t value){
 
         }else if (tree[cmpLeaf].value > value){
 
-            if(tree[cmpLeaf].right == ROOT){
+            if(tree[cmpLeaf].right == 0){
 
                 tree[cmpLeaf].right = treeSize;
                 tree[treeSize++].value = value;
@@ -65,11 +67,9 @@ bool addValue(int32_t value){
 
 void printTree(int32_t levelDeep){
 
-    #define LEVEL_BUFFER_SIZE 2
-
     uint32_t levelBuffer[LEVEL_BUFFER_SIZE][TREE_SIZE] = {{ROOT},{ROOT}};
 
-    for (int32_t i = levelDeep; i > ROOT; --i) {
+    for (int32_t i = levelDeep; i > 0; --i) {
 
         for (int32_t j = 0; j < 1 << (i - 1); ++j)printf(" ");
 
@@ -106,14 +106,14 @@ void printTree(int32_t levelDeep){
 
 int main() {
 
-    addValue(6);
-    addValue(1);
-    addValue(0);
-    addValue(7);
-    addValue(2);
-    addValue(8);
-    addValue(9);
-    addValue(3);
+    insertValue(6);
+    insertValue(1);
+    insertValue(0);
+    insertValue(7);
+    insertValue(2);
+    insertValue(8);
+    insertValue(9);
+    insertValue(3);
 
     printTree(6);
 
